@@ -6,7 +6,7 @@ function MenusIndex (props) {
   return(
     <div>
     <div className="full-width">
-    <h1>Menu</h1>
+    <h1>Menus <Link className='btn-default btn'to="/menus/new">Add a menu</Link></h1>
 
         {props.menus.map(menu => <Link to={`/menus/${menu.id}`}>
           <div className="menu-square"><div className="list" key={menu.id}>{menu.name}</div>
@@ -15,7 +15,7 @@ function MenusIndex (props) {
       {props.children}
       </div>
       <div className="full-width space-top">
-      <Link to="/menus/new">Add a menu</Link>
+
       </div>
     </div>
   )
