@@ -6,7 +6,7 @@ function RecipesIndex (props) {
   return (
   <div>
     <div className="full-width">
-    <h1>Recipe</h1>
+    <h1>Recipes <Link className='btn btn-default' to="/recipes/new">Add a recipe</Link> </h1>
       {props.recipes.map(recipe => <Link to={`/recipes/${recipe.id}`}>
         <div className="menu-square">
           <div className="list" key={recipe.id}>{recipe.name}</div>
@@ -15,7 +15,7 @@ function RecipesIndex (props) {
     {props.children}
     </div>
     <div className="full-width space-top">
-          <Link to="/recipes/new">Add a recipe</Link>
+
     </div>
   </div>)
 };

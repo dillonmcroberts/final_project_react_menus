@@ -26,8 +26,8 @@ class UserCreate extends React.Component {
       <div>
         <form onSubmit={this.newUserHandler}>
           <div className="form-group">
-            <input class="form-control" ref='name' placeholder="name" /><br/>
-            <input  class="form-control" ref='email' placeholder="email"/><br/>
+            <input className="form-control" ref='name' placeholder="name" /><br/>
+            <input  className="form-control" ref='email' placeholder="email"/><br/>
             <input type='password'ref='password' placeholder="password"/><br/>
           </div>
           <input className='btn btn-default' type="submit" value="Create a New Account"/>

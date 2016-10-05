@@ -33,6 +33,7 @@ class MenuNew extends React.Component {
   render(){
     return (
       <div>
+        <h1>Create a Menu</h1>
         <form onSubmit={this.newMenuHandler}>
           <label>name:</label>
           <input ref='name' /><br/>
