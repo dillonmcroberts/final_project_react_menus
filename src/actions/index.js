@@ -1,3 +1,7 @@
+import * as types from './ActionTypes';
+import sessionApi from '../api/sessionApi'
+
+
 export function addRecipe(newRecipeFromForm) {
   const newRecipeFromApi = fetch('http://localhost:3000/api/v1/recipes', {
     method: 'POST',
@@ -133,4 +137,19 @@ export function addUser(newUserFromForm) {
 
   return {type: 'ADD_USER', payload: newUserFromApi}
 
+}
+
+export function loginSuccess(){
+  return{type: types.LOG_IN_SUCCESS}
+}
+
+export function loginUser(credentials) {
+  return function(dispatch) {
+    return sessionApi.login(credentials).then(response => {
+      sessionStorage.setItem('jwt', response.jwt);
+      dispatch(loginSuccess());
+    }).catch(error => {
+      throw(error);
+    });
+  };
 }
