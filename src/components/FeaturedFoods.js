@@ -20,6 +20,7 @@ export default (props) => {
       <div className='col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
           Featured Menu
 
+
       </div>
 
       <div className='col-xs-6 col-md-6 col-lg-6 col-xl-6'>
