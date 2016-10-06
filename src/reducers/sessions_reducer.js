@@ -1,12 +1,12 @@
 import * as types from '../actions/ActionTypes';
-import initialState from './initial_state';
 import {browserHistory} from 'react-router';
 
-export default function sessionReducer(state = initialState.session, action) {
+export default function sessionReducer(state = [], action) {
   switch(action.type) {
-    case types.LOG_IN_SUCCESS:
+    case 'LOG_IN_SUCCESS':
+      sessionStorage.setItem('jwt', action.payload.jwt)
+      sessionStorage.setItem('currentUserId', action.payload.currentUserId)
       browserHistory.push('/')
-      return !sessionStorage.jwt
     default:
       return state;
   }
