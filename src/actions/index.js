@@ -134,3 +134,19 @@ export function addUser(newUserFromForm) {
   return {type: 'ADD_USER', payload: newUserFromApi}
 
 }
+
+
+export function updateMenu(menu) {
+  const request = fetch(`http://localhost:5000/api/v1/menus/${menu.id}`, {
+      method: 'PUT',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify({menu: menu})
+    }).then(responseMenu => {
+      return responseMenu.json()
+    }).then(updateMenuPayload => {
+      return updateMenuPayload
+    })
+    return {type: 'UPDATE_CAT',request}
+}

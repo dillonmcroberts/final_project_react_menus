@@ -5,6 +5,8 @@ import App from './components/App'
 import MenusIndex from './components/menus/MenusIndex'
 import MenuCreate from './components/menus/MenuCreate'
 import MenuShow from './components/menus/MenuShow'
+import MenuEdit from './components/menus/MenuEdit'
+
 
 import RecipeIndex from './components/recipes/RecipeIndex'
 import RecipeCreate from './components/recipes/RecipeCreate'
@@ -34,6 +36,7 @@ export default(
       <Route path='/menus' component={MenusIndex}/>
       <Route path='/menus/new' component={MenuCreate} />
       <Route path='/menus/:id' component={MenuShow} />
+      <Route path='/menus/edit' component={MenuEdit} />
 
       <Route path='/ingredients' component={IngredientsIndex}/>
       <Route path='/ingredients/new' component={IngredientCreate} />

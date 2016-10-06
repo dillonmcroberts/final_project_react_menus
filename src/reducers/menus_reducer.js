@@ -5,6 +5,9 @@ export default function menusReducer(state=[], action) {
       return action.payload;
     case 'ADD_MENU':
       return [...state, action.payload]
+    case 'UPDATE_MENU':
+      return [...state.filter(cat => cat.id !== action.cat.id),
+      Object.assign({}),action.cat]
     default:
       return state;
   }
