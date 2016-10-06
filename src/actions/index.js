@@ -21,6 +21,7 @@ export function fetchMenus(){
  const menus = fetch('http://localhost:3000/api/v1/menus').then(response => {
    return response.json()
  }).then(menusPayload => {
+   console.log("ajax for menus", menusPayload);
    return menusPayload
  })
 

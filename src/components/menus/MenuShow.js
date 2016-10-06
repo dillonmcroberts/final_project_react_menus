@@ -1,29 +1,34 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import MenuCreate from './MenuCreate'
+import ReduxPromise from 'redux-promise';
+import ReduxThunk from 'redux-thunk'
+import * as actions from '../../actions'
+import { bindActionCreators } from 'redux'
 
 
 class MenuShow extends React.Component {
   constructor(){
     super();
-    // this.appetizers = this.appetizers.bind(this)
-    // this.mains = this.mains.bind(this)
-    // this.dessert = this.dessert.bind(this)
+    this.appetizers = this.appetizers.bind(this)
+    this.mains = this.mains.bind(this)
+    this.dessert = this.dessert.bind(this)
 
   }
 
 
-//   appetizers(){
-//    debugger
-// {   this.props.menu.recipes.filter(recipe => recipe.course == 'appetizer').map(recipe => <li>{recipe.name}</li>)
-// }  }
-  // mains(){
-  //  this.props.menu.recipes.filter(recipe => recipe.course == 'main').map(recipe => <li>{recipe.name}</li>)
-  // }
-  // dessert(){
-  //  this.props.menu.recipes.filter(recipe => recipe.course == 'dessert').map(recipe => <li>{recipe.name}</li>)
-  //
-  // }
+appetizers(){
+
+return this.props.menu.recipes.filter(recipe => recipe.course == 'appetizer').map(recipe => <li>{recipe.name}</li>)
+
+}
+  mains(){
+   return this.props.menu.recipes.filter(recipe => recipe.course == 'main').map(recipe => <li>{recipe.name}</li>)
+  }
+  dessert(){
+   return this.props.menu.recipes.filter(recipe => recipe.course == 'dessert').map(recipe => <li>{recipe.name}</li>)
+
+  }
   render(){
   return(
     <div className='center text-center'>
@@ -34,14 +39,17 @@ class MenuShow extends React.Component {
       <h4>Appetizers</h4>
       <ul>
         <li>Deviled Eggs</li>
+        {this.appetizers()}
       </ul>
       <h4>Mains</h4>
         <ul>
           <li>Jambalaya</li>
+          {this.mains()}
         </ul>
       <h4>Desserts</h4>
         <ul>
           <li>Beignets</li>
+          {this.dessert()}
       </ul>
     </div>
   </div>
@@ -49,8 +57,11 @@ class MenuShow extends React.Component {
 }
 }
 
+function mapDispatchToProps(dispatch){
+  return {actions: bindActionCreators(actions, dispatch)}
+}
 function mapStateToProps(state, ownProps){
-
+console.log('mapStateToProps',state, ownProps);
   if (state.menus.length > 0){
     const menu = state.menus.find((menu) => {
       return menu.id == ownProps.params.id
@@ -61,5 +72,5 @@ function mapStateToProps(state, ownProps){
   }
 }
 
-const componentCreator = connect(mapStateToProps)
+const componentCreator = connect(mapStateToProps,mapDispatchToProps)
 export default componentCreator(MenuShow);
