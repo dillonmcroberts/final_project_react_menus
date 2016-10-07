@@ -10,7 +10,7 @@ function IngredientsIndex (props) {
     <div>
 
       <Link to='/ingredients/new'> Add a new ingredient</Link>
-      <ul>
+      <ul className="ingredients-list">
         {props.ingredients.map(ingredient => <Link to={`/ingredients/${ingredient.id}`}><li key={ingredient.id}>{ingredient.name}</li></Link>)}
       </ul>
     </div>
