@@ -76,7 +76,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state, ownProps) {
-debugger
   if (state.ingredients.length > 0) {
     return {ingredients: state.ingredients}
   }

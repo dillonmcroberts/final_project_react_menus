@@ -29,7 +29,7 @@ store.dispatch(fetchMenus())
 console.log(store.getState());
 
 ReactDOM.render(
-<div className='red-background'>
+<div>
   <Provider store={store} >
     <Router history={browserHistory} routes={routes} />
     </Provider>
