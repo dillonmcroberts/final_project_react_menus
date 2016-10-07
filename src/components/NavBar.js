@@ -24,6 +24,7 @@ class NavBar extends React.Component{
   }
 
   render(){
+    debugger;
     if (this.props.logged_in) {
 
       return (
@@ -45,7 +46,6 @@ class NavBar extends React.Component{
             <a className='navbar-brand brand' href={this.props.url}>{this.props.title}</a>
             <Link className='navbar-brand brand' to="/menus">Menus</Link>
             <Link to="/recipes" className='navbar-brand brand' >Recipes</Link>
-            <Link to="/users" className='navbar-brand brand' >Users</Link>
             <Link to="/ingredients" className='navbar-brand brand' >Ingredients</Link>
             <Link to="/login" className='navbar-brand brand' >Log In</Link>
             <Link to="/logout" className='navbar-brand brand' >Log Out</Link>
@@ -64,7 +64,7 @@ NavBar.propTypes = {
 }
 
 function mapStateToProps(state, ownProps) {
-  return {logged_in: state.session};
+  return {logged_in: sessionStorage.jwt};
 }
 
 export default connect(mapStateToProps)(NavBar);
