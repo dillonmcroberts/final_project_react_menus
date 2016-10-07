@@ -4,45 +4,85 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class MenuNew extends React.Component {
-
   constructor(props){
     super(props)
+    this.state = {
+      recipeIds: []
+    }
     this.newMenuHandler = this.newMenuHandler.bind(this)
+    this.handleAddRecipe = this.handleAddRecipe.bind(this)
+    this.handleRemoveRecipe = this.handleRemoveRecipe.bind(this)
   }
-
+//presentational stuff goes in render
   newMenuHandler(event){
     event.preventDefault()
-    let recipes = this.props.recipes
-    let checkedRecipes = recipes.filter((recipe) => this.refs[recipe.id].checked )
-    let idRecipes = checkedRecipes.map((recipe) => (recipe.id))
 
     const newMenu = {
       name: this.refs.name.value,
       occasion: this.refs.occasion.value,
       description: this.refs.description.value,
-      recipe_ids: idRecipes
+      recipe_ids: this.state.recipeIds
     }
     this.props.actions.addMenu(newMenu)
   }
 
-  makeRecipes() {
+  handleAddRecipe(event){
+    event.preventDefault()
+    const newRecipeIdsArray = this.state.recipeIds.slice();
+    newRecipeIdsArray.push(parseInt(event.target.id))
+
+    this.setState({
+      recipeIds: newRecipeIdsArray
+    })
+  }
+
+  handleRemoveRecipe(event){
+    event.preventDefault()
+    const newRecipeIdsArray = this.state.recipeIds.slice();
+    newRecipeIdsArray.pop(parseInt(event.target.id))
+
+    this.setState({
+      recipeIds: newRecipeIdsArray
+    })
+  }
+
+  makeUnselectedRecipes() {
   let recipes = this.props.recipes
-  return recipes.map((recipe) => <div ref={`div${recipe.id}`}> <label>{recipe.name}</label><input type='checkbox' ref={`${recipe.id}`}/> </div>)
+  const notSelRecipes = recipes.filter(recipe => !this.state.recipeIds.includes(recipe.id))
+console.log(this.state.recipeIds)
+  return notSelRecipes.map((recipe) => <div id={recipe.id} draggable="true" onDragEnd={this.handleAddRecipe}> <p ref={`${recipe.id}`}>{recipe.name}</p> </div>)
 }
 
+makeSelectedRecipes(){
+  //look at all recipes
+  //find ones where recipe is included in recipe id
+  //want declarative more than imperative
+  let recipes = this.props.recipes
+  const selRecipes = recipes.filter(recipe => this.state.recipeIds.includes(recipe.id))
+  return selRecipes.map((recipe) => <div id={recipe.id} draggable="true" onDragEnd={this.handleRemoveRecipe}> <p ref={`${recipe.id}`}>{recipe.name}</p> </div>)
+}
   render(){
     return (
-      <div>
+      <div className="full-width">
         <h1>Create a Menu</h1>
         <form onSubmit={this.newMenuHandler}>
-          <label>name:</label>
-          <input ref='name' /><br/>
-          <label>occasion:</label>
-          <input ref='occasion' /><br/>
-          <label>description:</label>
-          <input ref='description' /><br/>
-          {this.makeRecipes()}
-          <input type='submit' />
+          <input ref='name' placeholder="name"/><br/>
+          <input ref='occasion' placeholder="occasion"/><br/>
+          <input ref='description' placeholder="description"/><br/>
+          <div className="selected-recipes">
+            <h3 className="text-center">Selected Recipes</h3>
+            <div className="left-recipe-padding">
+              {this.state.selectedRecipes}
+              {this.makeSelectedRecipes()}
+            </div>
+          </div>
+          <input className='btn' type='submit' />
+          <div className="all-recipes">
+            <h3 className="text-center">Recipes</h3>
+            <div className="left-recipe-padding">
+            {this.makeUnselectedRecipes()}
+            </div>
+          </div>
         </form>
       </div>
     )
