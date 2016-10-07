@@ -146,3 +146,8 @@ export function loginUser(credentials) {
   })
   return {type: 'LOG_IN_SUCCESS', payload: jwtToken}
 }
+
+export function logOutUser(){
+  sessionStorage.removeItem('jwt');
+  return {type: 'LOG_OUT'}
+}

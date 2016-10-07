@@ -22,8 +22,10 @@ function MenusIndex (props) {
 }
 
 function mapStateToProps(state){
-  return {
-    menus: state.menus
+  if (state.menus.length > 0) {
+    return {menus: state.menus}
+  } else {
+    return {menus: []}
   }
 }
 

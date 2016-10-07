@@ -19,6 +19,7 @@ import UserShow from './components/users/UserShow'
 import UserCreate from './components/users/UserCreate'
 
 import SessionCreate from './components/sessions/SessionCreate'
+import LogOut from './components/sessions/LogOut'
 
 import FeaturedFoods from './components/FeaturedFoods'
 
@@ -46,6 +47,8 @@ export default(
       <Route path='/users/:id' component={UserShow}/>
 
       <Route path='/login' component={SessionCreate}/>
+      <Route path='/logout' component={LogOut}/>
+
     </Route>
   )
 
