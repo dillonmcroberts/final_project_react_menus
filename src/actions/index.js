@@ -6,6 +6,7 @@ export function addRecipe(newRecipeFromForm) {
   const newRecipeFromApi = fetch('http://localhost:3000/api/v1/recipes', {
     method: 'POST',
     headers: {
+      'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },

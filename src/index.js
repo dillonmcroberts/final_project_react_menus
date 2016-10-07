@@ -10,6 +10,7 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
 import ReduxPromise from 'redux-promise';
 import {fetchMenus, fetchRecipes, fetchIngredients, fetchUsers } from './actions'
+
 const store = createStore(rootReducer, applyMiddleware(ReduxPromise));
 
 // store.dispatch( fetchMenus() );
