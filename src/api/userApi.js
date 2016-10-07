@@ -1,13 +1,13 @@
-export default class IngredientApi{
+export default class UserApi{
   static requestHeaders(){
     if (sessionStorage.jwt){
       return {'AUTHORIZATION':`Bearer${sessionStorage.jwt}`}
     }
   }
 
-  static getAllIngredients(){
+  static getAllUsers(){
     const headers = this.requestHeaders();
-    const request = new Request('http://localhost:3000/api/v1/ingredients', {
+    const request = new Request('http://localhost:3000/api/v1/users', {
       method: 'GET',
       headers: headers
     });

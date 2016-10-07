@@ -1,5 +1,9 @@
 import * as types from './ActionTypes';
 import sessionApi from '../api/sessionApi'
+import MenuApi from '../api/menuApi'
+import RecipeApi from '../api/recipeApi'
+import IngredientApi from '../api/ingredientApi'
+import UserApi from '../api/userApi'
 
 
 export function addRecipe(newRecipeFromForm) {
@@ -23,12 +27,7 @@ export function addRecipe(newRecipeFromForm) {
 }
 
 export function fetchMenus(){
- const menus = fetch('http://localhost:3000/api/v1/menus').then(response => {
-   return response.json()
- }).then(menusPayload => {
-   console.log("ajax for menus", menusPayload);
-   return menusPayload
- })
+ const menus = MenuApi.getAllMenus();
 
  return {
    type: 'FETCH_MENUS',
@@ -39,11 +38,7 @@ export function fetchMenus(){
 
 export function fetchRecipes(){
 
- const recipes = fetch('http://localhost:3000/api/v1/recipes').then(response => {
-   return response.json()
- }).then(recipesPayload => {
-   return recipesPayload
- })
+const recipes = RecipeApi.getAllRecipes();
 
  return {
    type: 'FETCH_RECIPES',
@@ -54,11 +49,7 @@ export function fetchRecipes(){
 
 export function fetchIngredients(){
 
- const ingredients = fetch('http://localhost:3000/api/v1/ingredients').then(response => {
-   return response.json()
- }).then(ingredientsPayload => {
-   return ingredientsPayload
- })
+const ingredients = IngredientApi.getAllIngredients();
 
  return {
    type: 'FETCH_INGREDIENTS',
@@ -69,11 +60,7 @@ export function fetchIngredients(){
 
 export function fetchUsers(){
 
- const users = fetch('http://localhost:3000/api/v1/users').then(response => {
-   return response.json()
- }).then(usersPayload => {
-   return usersPayload
- })
+ const users = UserApi.getAllUsers();
 
  return {
    type: 'FETCH_USERS',

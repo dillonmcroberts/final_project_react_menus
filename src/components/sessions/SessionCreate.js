@@ -20,7 +20,6 @@ class SessionCreate extends React.Component {
   }
 
   onSave(event){
-    debugger;
     event.preventDefault();
     this.props.actions.loginUser(this.state.credentials)
   }

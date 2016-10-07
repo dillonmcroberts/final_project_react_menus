@@ -4,8 +4,6 @@ import {Link} from 'react-router'
 
 
 function IngredientsIndex (props) {
-  debugger;
-
   return(
     <div>
 

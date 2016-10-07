@@ -1,6 +1,8 @@
-class MenuApi{
+export default class MenuApi{
   static requestHeaders(){
-    return {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
+    if (sessionStorage.jwt){
+      return {'AUTHORIZATION':`Bearer${sessionStorage.jwt}`}
+    }
   }
 
   static getAllMenus(){
