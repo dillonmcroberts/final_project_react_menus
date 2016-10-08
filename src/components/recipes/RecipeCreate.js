@@ -57,7 +57,9 @@ class RecipeCreate extends React.Component {
           <input ref='appetizer' type="radio" name="course" value="appetizer"/>Appetizer
           <input ref='dessert' type="radio" name="course" value="dessert"/>Dessert<br/>
           <label>Select Ingredients:</label><br/>
+          <div> className='container'
           {this.makeIngredients()}
+          </div>
           <input type="submit" value="create new recipe"/>
         </form>
       </div>

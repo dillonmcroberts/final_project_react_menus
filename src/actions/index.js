@@ -1,7 +1,16 @@
+import * as types from './ActionTypes';
+import sessionApi from '../api/sessionApi'
+import MenuApi from '../api/menuApi'
+import RecipeApi from '../api/recipeApi'
+import IngredientApi from '../api/ingredientApi'
+import UserApi from '../api/userApi'
+
+
 export function addRecipe(newRecipeFromForm) {
   const newRecipeFromApi = fetch('http://localhost:3000/api/v1/recipes', {
     method: 'POST',
     headers: {
+      'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
@@ -18,12 +27,7 @@ export function addRecipe(newRecipeFromForm) {
 }
 
 export function fetchMenus(){
- const menus = fetch('http://localhost:3000/api/v1/menus').then(response => {
-   return response.json()
- }).then(menusPayload => {
-   console.log("ajax for menus", menusPayload);
-   return menusPayload
- })
+ const menus = MenuApi.getAllMenus();
 
  return {
    type: 'FETCH_MENUS',
@@ -34,11 +38,7 @@ export function fetchMenus(){
 
 export function fetchRecipes(){
 
- const recipes = fetch('http://localhost:3000/api/v1/recipes').then(response => {
-   return response.json()
- }).then(recipesPayload => {
-   return recipesPayload
- })
+const recipes = RecipeApi.getAllRecipes();
 
  return {
    type: 'FETCH_RECIPES',
@@ -49,11 +49,7 @@ export function fetchRecipes(){
 
 export function fetchIngredients(){
 
- const ingredients = fetch('http://localhost:3000/api/v1/ingredients').then(response => {
-   return response.json()
- }).then(ingredientsPayload => {
-   return ingredientsPayload
- })
+const ingredients = IngredientApi.getAllIngredients();
 
  return {
    type: 'FETCH_INGREDIENTS',
@@ -64,11 +60,7 @@ export function fetchIngredients(){
 
 export function fetchUsers(){
 
- const users = fetch('http://localhost:3000/api/v1/users').then(response => {
-   return response.json()
- }).then(usersPayload => {
-   return usersPayload
- })
+ const users = UserApi.getAllUsers();
 
  return {
    type: 'FETCH_USERS',
@@ -133,4 +125,31 @@ export function addUser(newUserFromForm) {
 
   return {type: 'ADD_USER', payload: newUserFromApi}
 
+}
+
+export function loginSuccess(){
+  return{type: types.LOG_IN_SUCCESS}
+}
+
+export function loginUser(credentials) {
+  const jwtToken = fetch('http://localhost:3000/api/v1/login', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  }).then(response => {
+    return response.json()
+  }).then(jwtPayload => {
+    return jwtPayload
+  })
+  return {type: 'LOG_IN_SUCCESS', payload: jwtToken}
+}
+
+export function logOutUser(){
+  debugger;
+  sessionStorage.removeItem('jwt');
+
+  return {type: 'LOG_OUT'}
 }
