@@ -43,17 +43,17 @@ export default(
       <Route path='/ingredients/:id' component={IngredientShow} />
 
       <Route path='/users' component={UsersIndex}/>
-      <Route path='/users/new' component={UserCreate}/>
-      <Route path='/users/:id' component={UserShow}/>
+      <Route path='/users/:id' component={UserShow} onEnter={requireAuth}/>
 
+      <Route path='/signup' component={UserCreate}/>
       <Route path='/login' component={SessionCreate}/>
       <Route path='/logout' component={LogOut}/>
+
 
     </Route>
   )
 
 function requireAuth(nextState, replace){
-  debugger;
   if (!sessionStorage.jwt){
     replace({
       pathname: '/login',

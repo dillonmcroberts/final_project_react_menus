@@ -24,7 +24,6 @@ class NavBar extends React.Component{
   }
 
   render(){
-    debugger;
     if (this.props.logged_in) {
 
       return (
@@ -48,7 +47,6 @@ class NavBar extends React.Component{
             <Link to="/recipes" className='navbar-brand brand' >Recipes</Link>
             <Link to="/ingredients" className='navbar-brand brand' >Ingredients</Link>
             <Link to="/login" className='navbar-brand brand' >Log In</Link>
-            <Link to="/logout" className='navbar-brand brand' >Log Out</Link>
             <Link to="/signup" className='navbar-brand brand' >Sign Up</Link>
 
 

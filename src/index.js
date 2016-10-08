@@ -13,19 +13,11 @@ import {fetchMenus, fetchRecipes, fetchIngredients, fetchUsers } from './actions
 
 const store = createStore(rootReducer, applyMiddleware(ReduxPromise));
 
-// store.dispatch( fetchMenus() );
-// store.dispatch( fetchRecipes() );
 store.dispatch( fetchIngredients() );
 store.dispatch( fetchUsers() );
-store.dispatch(fetchRecipes());
-store.dispatch(fetchMenus())
+store.dispatch( fetchRecipes() );
+store.dispatch( fetchMenus() )
 
-// Promise.all([
-//   ,
-//
-// ]).then(() => {
-//  console.log('HI');
-// });
 
 console.log(store.getState());
 
