@@ -6,6 +6,18 @@ import IngredientApi from '../api/ingredientApi'
 import UserApi from '../api/userApi'
 
 
+// recipes actions
+
+export function fetchRecipes(){
+
+const recipes = RecipeApi.getAllRecipes();
+
+ return {
+   type: 'FETCH_RECIPES',
+   payload: recipes
+ }
+}
+
 export function addRecipe(newRecipeFromForm) {
   const newRecipeFromApi = fetch('http://localhost:3000/api/v1/recipes', {
     method: 'POST',
@@ -23,8 +35,9 @@ export function addRecipe(newRecipeFromForm) {
   })
 
   return {type: 'ADD_RECIPE', payload: newRecipeFromApi}
-
 }
+
+//menus actions
 
 export function fetchMenus(){
  const menus = MenuApi.getAllMenus();
@@ -33,42 +46,7 @@ export function fetchMenus(){
    type: 'FETCH_MENUS',
    payload: menus
  }
-
 }
-
-export function fetchRecipes(){
-
-const recipes = RecipeApi.getAllRecipes();
-
- return {
-   type: 'FETCH_RECIPES',
-   payload: recipes
- }
-
-}
-
-export function fetchIngredients(){
-
-const ingredients = IngredientApi.getAllIngredients();
-
- return {
-   type: 'FETCH_INGREDIENTS',
-   payload: ingredients
- }
-
-}
-
-export function fetchUsers(){
-
- const users = UserApi.getAllUsers();
-
- return {
-   type: 'FETCH_USERS',
-   payload: users
- }
-
-}
-
 
 export function addMenu(newMenuFromForm) {
   const newMenuFromApi = fetch('http://localhost:3000/api/v1/menus', {
@@ -86,7 +64,18 @@ export function addMenu(newMenuFromForm) {
   })
 
   return {type: 'ADD_MENU', payload: newMenuFromApi}
+}
 
+//ingredients actions
+
+export function fetchIngredients(){
+
+const ingredients = IngredientApi.getAllIngredients();
+
+ return {
+   type: 'FETCH_INGREDIENTS',
+   payload: ingredients
+ }
 }
 
 export function addIngredient(newIngredientFromForm) {
@@ -105,7 +94,18 @@ export function addIngredient(newIngredientFromForm) {
   })
 
   return {type: 'ADD_INGREDIENT', payload: newIngredientFromApi}
+}
 
+//users actions
+
+export function fetchUsers(){
+
+ const users = UserApi.getAllUsers();
+
+ return {
+   type: 'FETCH_USERS',
+   payload: users
+ }
 }
 
 export function addUser(newUserFromForm) {
@@ -126,6 +126,8 @@ export function addUser(newUserFromForm) {
   return {type: 'ADD_USER', payload: newUserFromApi}
 
 }
+
+//login and logout actions
 
 export function loginSuccess(){
   return{type: types.LOG_IN_SUCCESS}
