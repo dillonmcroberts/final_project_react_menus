@@ -9,7 +9,13 @@ class RecipeCreate extends React.Component {
 
   constructor(props) {
     super(props)
+
+    this.state = {term: ''}
+
+    this.onInputChange = this.onInputChange.bind(this)
     this.newRecipeHandler = this.newRecipeHandler.bind(this)
+    this.searchBoxInput = this.searchBoxInput.bind(this)
+
   }
 
   newRecipeHandler(event) {
@@ -32,11 +38,34 @@ class RecipeCreate extends React.Component {
     }
     this.props.actions.addRecipe(newRecipe)
   }
-  makeIngredients() {
 
+  // filterListByTerm(ingredient) {
+  //   ingredient.name.toLowerCase().includes(this.state.term.toLowerCase())
+  // }
+
+  makeIngredients() {
   let ingredients = this.props.ingredients
-  return ingredients.map((ingredient) => <div ref={`div${ingredient.id}`}> <label>{ingredient.name}</label><input type='checkbox' ref={`${ingredient.id}`}/> </div>)
+  let filteredIngredients = []
+
+  ingredients.forEach(ingredient => {
+    if (ingredient.name.toLowerCase().includes(this.state.term.toLowerCase()))
+    {
+      filteredIngredients.push(ingredient)
+    }
+  })
+
+  return filteredIngredients.map((ingredient) => <div ref={`div${ingredient.id}`}> <label>{ingredient.name}</label><input type='checkbox' ref={`${ingredient.id}`}/> </div>)
 }
+
+
+
+  onInputChange(event) {
+    this.setState({ term: event.target.value });
+  }
+
+  searchBoxInput(event){
+    this.onInputChange(event);
+  }
 
 
   render() {
@@ -57,7 +86,8 @@ class RecipeCreate extends React.Component {
           <input ref='appetizer' type="radio" name="course" value="appetizer"/>Appetizer
           <input ref='dessert' type="radio" name="course" value="dessert"/>Dessert<br/>
           <label>Select Ingredients:</label><br/>
-          <div> className='container'
+          <div className='container'>
+          <input value={this.state.term} onChange={this.searchBoxInput}/>
           {this.makeIngredients()}
           </div>
           <input type="submit" value="create new recipe"/>
