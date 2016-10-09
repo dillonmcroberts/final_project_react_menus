@@ -16,7 +16,7 @@ export class MenuEdit extends React.Component {
     let recipes = this.props.recipes
     let checkedRecipes = recipes.filter((recipe) => this.refs[recipe.id].checked )
     let idRecipes = checkedRecipes.map((recipe) => (recipe.id))
-    debugger
+
     const menu = {
       id: this.props.params.id,
       name: this.refs.name.value,
@@ -30,7 +30,8 @@ export class MenuEdit extends React.Component {
 
   makeRecipes() {
   let recipes = this.props.recipes
-  return recipes.map((recipe) => <div ref={`div${recipe.id}`}> <label>{recipe.name}</label><input type='checkbox' ref={`${recipe.id}`}/> </div>)
+  return recipes.map((recipe) => <div ref={`div${recipe.id}`}> <label>{recipe.name}</label>
+<input type='checkbox' ref={`${recipe.id}`} /> </div>)
   }
 
   render(){
@@ -39,18 +40,18 @@ export class MenuEdit extends React.Component {
       <form onSubmit={this.updateMenuHandler}>
         <input ref='id' type='hidden' value={this.props.params.id}/>
         <label>name:</label>
-        <input ref='name'/><br/>
+        <input ref='name' value={this.props.menu.name}/><br/>
         <label>occasion:</label>
-        <input ref='occasion' /><br/>
+        <input ref='occasion' value={this.props.menu.occasion}/><br/>
         <label>description:</label>
-        <input ref='description' /><br/>
+        <input ref='description' value={this.props.menu.description}/><br/>
         {this.makeRecipes()}
         <input type='submit' />
       </form>
-    </div>)
-
-  }
+    </div>
+  )}
 }
+
 function mapDispatchToProps(dispatch){
   return {actions: bindActionCreators(actions, dispatch)}
 }

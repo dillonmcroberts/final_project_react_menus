@@ -10,6 +10,7 @@ import MenuEdit from './components/menus/MenuEdit'
 import RecipeIndex from './components/recipes/RecipeIndex'
 import RecipeCreate from './components/recipes/RecipeCreate'
 import RecipeShow from './components/recipes/RecipeShow'
+import RecipeEdit from './components/recipes/RecipeEdit'
 
 
 import IngredientsIndex from './components/ingredients/IngredientsIndex'
@@ -31,6 +32,7 @@ export default(
       <Route path='/recipes' component={RecipeIndex}/>
       <Route path='/recipes/new' component={RecipeCreate}/>
       <Route path='/recipes/:id' component={RecipeShow}/>
+      <Route path='/recipes/:id/edit' component={RecipeEdit}/>
 
 
       <Route path='/menus' component={MenusIndex}/>
