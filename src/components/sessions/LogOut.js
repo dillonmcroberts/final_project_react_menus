@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux'
 class Logout extends React.Component {
     constructor(props){
       super(props)
-      this.state = {logged_in: true}
     }
     componentDidMount() {
       this.props.actions.logOutUser();
