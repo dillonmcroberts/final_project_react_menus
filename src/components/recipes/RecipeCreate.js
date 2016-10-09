@@ -4,9 +4,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import IngredientCreate from '../ingredients/IngredientCreate'
 import MenuCreate from '../menus/MenuCreate'
+
 class RecipeCreate extends React.Component {
-
-
   constructor(props) {
     super(props)
 
