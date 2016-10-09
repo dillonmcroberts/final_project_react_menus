@@ -38,17 +38,17 @@ return this.props.menu.recipes.filter(recipe => recipe.course == 'appetizer').ma
       <h6 className='uppercase'> {this.props.menu.description}</h6>
       <h4>Appetizers</h4>
       <ul>
-        <li>Deviled Eggs</li>
+
         {this.appetizers()}
       </ul>
       <h4>Mains</h4>
         <ul>
-          <li>Jambalaya</li>
+
           {this.mains()}
         </ul>
       <h4>Desserts</h4>
         <ul>
-          <li>Beignets</li>
+
           {this.dessert()}
       </ul>
     </div>
