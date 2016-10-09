@@ -134,3 +134,35 @@ export function addUser(newUserFromForm) {
   return {type: 'ADD_USER', payload: newUserFromApi}
 
 }
+
+export function updateMenu(menu){
+  const updateApiMenu = fetch(`http://localhost:3000/api/v1/menus/${menu.id}`,{
+    method: "PATCH",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({menu: menu})
+  }).then(response => {
+    return response.json()
+  }).then(updateMenuPlayload => {
+    return updateMenuPlayload
+  })
+  return {type: 'UPDATE_MENU', payload: updateApiMenu}
+}
+
+export function updateRecipe(recipe){
+  const updateApiRecipe = fetch(`http://localhost:3000/api/v1/recipes/${recipe.id}`,{
+    method: "PATCH",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({recipe: recipe})
+  }).then(response => {
+    return response.json()
+  }).then(updateRecipePlayload => {
+    return updateRecipePlayload
+  })
+  return {type: 'UPDATE_RECIPE', payload: updateApiRecipe}
+}

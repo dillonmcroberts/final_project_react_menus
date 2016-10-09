@@ -29,7 +29,7 @@ body {
   width: 30%;
   padding-bottom: 30%;
   border-width: 1px;
-  background-color: rgb(223, 236, 222);
+  background-color: white;
   display: inline-block;
   float: left;
   margin: 1%;
@@ -42,7 +42,7 @@ body {
 }
 
 .body-background {
-  background-color: rgb(159, 206, 154);
+  background-color: #efece3;
 }
 
 a {
@@ -86,5 +86,5 @@ a:hover {
   padding-bottom: 20%;
   border-width: 1px;
   height: 70%;
-  background-color: rgb(223, 236, 222);
+  background-color: white;
 }

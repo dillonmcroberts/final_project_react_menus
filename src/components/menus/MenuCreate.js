@@ -2,6 +2,7 @@ import React from 'react'
 import * as actions from '../../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import RecipeCreate from '../recipes/RecipeCreate'
 
 class MenuNew extends React.Component {
 
@@ -40,11 +41,12 @@ class MenuNew extends React.Component {
           <label>occasion:</label>
           <input ref='occasion' /><br/>
           <label>description:</label>
-          <input ref='description' /><br/>
-          {this.makeRecipes()}
-          <input type='submit' />
-        </form>
-      </div>
+          <input ref='description' /><br/><br/>
+            <h3>Add Recipes to Menu:</h3>
+            {this.makeRecipes()}
+            <input type='submit' />
+          </form>
+        </div>
     )
   }
 }

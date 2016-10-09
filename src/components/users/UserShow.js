@@ -3,15 +3,20 @@ import {connect} from 'react-redux';
 
 
 function UserShow (props) {
-  debugger
+
     return (
   <div className="col-lg-5 col-md-5 col-sm-5">
     <div className="panel-body">
       <div className="thumbnail">
-
                 <h1>
                 {props.user.name}
                 </h1>
+                <p>Location: {props.user.location}</p>
+                <p>Fav Foods: {props.user.fav_foods}</p>
+                <div><ul>{props.user.menus.map(
+                    menu=><li key={menu.id}>{menu.name}</li>)}</ul></div>
+                    <div><ul>{props.user.menus.map(
+                        menu=><li key={menu.id}>{menu.name}</li>)}</ul></div>
       </div>
     </div>
   </div>
