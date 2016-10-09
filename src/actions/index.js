@@ -1,7 +1,28 @@
+import * as types from './ActionTypes';
+import sessionApi from '../api/sessionApi'
+import MenuApi from '../api/menuApi'
+import RecipeApi from '../api/recipeApi'
+import IngredientApi from '../api/ingredientApi'
+import UserApi from '../api/userApi'
+
+
+// recipes actions
+
+export function fetchRecipes(){
+
+const recipes = RecipeApi.getAllRecipes();
+
+ return {
+   type: 'FETCH_RECIPES',
+   payload: recipes
+ }
+}
+
 export function addRecipe(newRecipeFromForm) {
   const newRecipeFromApi = fetch('http://localhost:3000/api/v1/recipes', {
     method: 'POST',
     headers: {
+      'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
@@ -14,69 +35,34 @@ export function addRecipe(newRecipeFromForm) {
   })
 
   return {type: 'ADD_RECIPE', payload: newRecipeFromApi}
-
 }
 
+export function updateRecipe(recipe){
+  const updateApiRecipe = fetch(`http://localhost:3000/api/v1/recipes/${recipe.id}`,{
+    method: "PATCH",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({recipe: recipe})
+  }).then(response => {
+    return response.json()
+  }).then(updateRecipePlayload => {
+    return updateRecipePlayload
+  })
+  return {type: 'UPDATE_RECIPE', payload: updateApiRecipe}
+}
+
+//menus actions
+
 export function fetchMenus(){
- const menus = fetch('http://localhost:3000/api/v1/menus').then(response => {
-   return response.json()
- }).then(menusPayload => {
-   console.log("ajax for menus", menusPayload);
-   return menusPayload
- })
+ const menus = MenuApi.getAllMenus();
 
  return {
    type: 'FETCH_MENUS',
    payload: menus
  }
-
 }
-
-export function fetchRecipes(){
-
- const recipes = fetch('http://localhost:3000/api/v1/recipes').then(response => {
-   return response.json()
- }).then(recipesPayload => {
-   return recipesPayload
- })
-
- return {
-   type: 'FETCH_RECIPES',
-   payload: recipes
- }
-
-}
-
-export function fetchIngredients(){
-
- const ingredients = fetch('http://localhost:3000/api/v1/ingredients').then(response => {
-   return response.json()
- }).then(ingredientsPayload => {
-   return ingredientsPayload
- })
-
- return {
-   type: 'FETCH_INGREDIENTS',
-   payload: ingredients
- }
-
-}
-
-export function fetchUsers(){
-
- const users = fetch('http://localhost:3000/api/v1/users').then(response => {
-   return response.json()
- }).then(usersPayload => {
-   return usersPayload
- })
-
- return {
-   type: 'FETCH_USERS',
-   payload: users
- }
-
-}
-
 
 export function addMenu(newMenuFromForm) {
   const newMenuFromApi = fetch('http://localhost:3000/api/v1/menus', {
@@ -94,7 +80,33 @@ export function addMenu(newMenuFromForm) {
   })
 
   return {type: 'ADD_MENU', payload: newMenuFromApi}
+}
+export function updateMenu(menu){
+  const updateApiMenu = fetch(`http://localhost:3000/api/v1/menus/${menu.id}`,{
+    method: "PATCH",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({menu: menu})
+  }).then(response => {
+    return response.json()
+  }).then(updateMenuPlayload => {
+    return updateMenuPlayload
+  })
+  return {type: 'UPDATE_MENU', payload: updateApiMenu}
+}
 
+//ingredients actions
+
+export function fetchIngredients(){
+
+const ingredients = IngredientApi.getAllIngredients();
+
+ return {
+   type: 'FETCH_INGREDIENTS',
+   payload: ingredients
+ }
 }
 
 export function addIngredient(newIngredientFromForm) {
@@ -113,7 +125,18 @@ export function addIngredient(newIngredientFromForm) {
   })
 
   return {type: 'ADD_INGREDIENT', payload: newIngredientFromApi}
+}
 
+//users actions
+
+export function fetchUsers(){
+
+ const users = UserApi.getAllUsers();
+
+ return {
+   type: 'FETCH_USERS',
+   payload: users
+ }
 }
 
 export function addUser(newUserFromForm) {
@@ -135,34 +158,28 @@ export function addUser(newUserFromForm) {
 
 }
 
-export function updateMenu(menu){
-  const updateApiMenu = fetch(`http://localhost:3000/api/v1/menus/${menu.id}`,{
-    method: "PATCH",
+
+
+
+
+export function loginUser(credentials) {
+  const jwtToken = fetch('http://localhost:3000/api/v1/login', {
+    method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({menu: menu})
+    body: JSON.stringify(credentials)
   }).then(response => {
     return response.json()
-  }).then(updateMenuPlayload => {
-    return updateMenuPlayload
+  }).then(jwtPayload => {
+    return jwtPayload
   })
-  return {type: 'UPDATE_MENU', payload: updateApiMenu}
+  return {type: 'LOG_IN_SUCCESS', payload: jwtToken}
 }
 
-export function updateRecipe(recipe){
-  const updateApiRecipe = fetch(`http://localhost:3000/api/v1/recipes/${recipe.id}`,{
-    method: "PATCH",
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({recipe: recipe})
-  }).then(response => {
-    return response.json()
-  }).then(updateRecipePlayload => {
-    return updateRecipePlayload
-  })
-  return {type: 'UPDATE_RECIPE', payload: updateApiRecipe}
+export function logOutUser(){
+  debugger;
+  sessionStorage.removeItem('jwt');
+  return {type: 'LOG_OUT'}
 }

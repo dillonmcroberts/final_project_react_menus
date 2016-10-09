@@ -56,7 +56,7 @@ a:hover {
 .btn {
   background-color: rgb(80, 107, 78);
   border-color: rgb(80, 107, 78);
-
+  color: white;
 }
 
 .btn:hover {
@@ -67,6 +67,11 @@ a:hover {
 
 .left-padding {
   padding-left:2%;
+
+}
+
+.left-recipe-padding {
+  padding-left:4%;
 
 }
 .uppercase {
@@ -87,4 +92,59 @@ a:hover {
   border-width: 1px;
   height: 70%;
   background-color: white;
+}
+
+.selected-recipes {
+  width: 25%;
+  background-color: rgb(220, 233, 219);
+  height: 500px;
+  display: block;
+  position: absolute;
+  right: 80px;
+  top: 80px;
+}
+
+.all-recipes {
+  width: 25%;
+  background-color: rgb(220, 233, 219);
+  height: 500px;
+  display: block;
+  position: absolute;
+  right: 450px;
+  top: 80px;
+}
+
+.dk-green{
+  background-color: rgb(80, 107, 78);
+  color: white;
+}
+
+.drag-me {
+  width: 150px;
+  color: rgb(84, 143, 82);
+  border: 2px dashed rgb(84, 143, 82);
+  /*text-align: center;*/
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+li.placeholder:before {
+  content: "Drop here";
+  color: white;
+}
+
+.ingredients-list {
+  padding: 0;
+  list-style-type: none;
+
+}
+.ingredients-list ul li {
+  list-style-type: none;
+
+}
+
+.ingredients-list:hover {
+  color: white;
+
 }
