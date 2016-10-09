@@ -2,12 +2,14 @@ import React from 'react'
 import * as actions from '../../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import RecipeCreate from '../recipes/RecipeCreate'
 
 class MenuNew extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      recipeIds: []
+      recipeIds: [],
+      message: 'Add some recipes!'
     }
     this.newMenuHandler = this.newMenuHandler.bind(this)
     this.handleAddRecipe = this.handleAddRecipe.bind(this)
@@ -28,29 +30,35 @@ class MenuNew extends React.Component {
 
   handleAddRecipe(event){
     event.preventDefault()
+    event.target.className = ""
     const newRecipeIdsArray = this.state.recipeIds.slice();
     newRecipeIdsArray.push(parseInt(event.target.id))
-
     this.setState({
-      recipeIds: newRecipeIdsArray
+      recipeIds: newRecipeIdsArray,
+      message: ""
     })
   }
 
   handleRemoveRecipe(event){
     event.preventDefault()
+    event.target.className = ""
     const newRecipeIdsArray = this.state.recipeIds.slice();
     newRecipeIdsArray.pop(parseInt(event.target.id))
-
     this.setState({
-      recipeIds: newRecipeIdsArray
+      recipeIds: newRecipeIdsArray,
     })
   }
 
-  makeUnselectedRecipes() {
+  handleDragStart(event){
+    event.target.className = "drag-me"
+    // event.target.style.border = "2px dashed white"
+    // event.target.paddingRight = "4%"
+  }
+
+makeUnselectedRecipes() {
   let recipes = this.props.recipes
   const notSelRecipes = recipes.filter(recipe => !this.state.recipeIds.includes(recipe.id))
-console.log(this.state.recipeIds)
-  return notSelRecipes.map((recipe) => <div id={recipe.id} draggable="true" onDragEnd={this.handleAddRecipe}> <p ref={`${recipe.id}`}>{recipe.name}</p> </div>)
+  return notSelRecipes.map((recipe) => <div id={recipe.id} draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleAddRecipe}> <p ref={`${recipe.id}`}>{recipe.name}</p> </div>)
 }
 
 makeSelectedRecipes(){
@@ -59,7 +67,7 @@ makeSelectedRecipes(){
   //want declarative more than imperative
   let recipes = this.props.recipes
   const selRecipes = recipes.filter(recipe => this.state.recipeIds.includes(recipe.id))
-  return selRecipes.map((recipe) => <div id={recipe.id} draggable="true" onDragEnd={this.handleRemoveRecipe}> <p ref={`${recipe.id}`}>{recipe.name}</p> </div>)
+  return selRecipes.map((recipe) => <div id={recipe.id} draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleRemoveRecipe}> <p ref={`${recipe.id}`}>{recipe.name}</p> </div>)
 }
   render(){
     return (
@@ -72,7 +80,9 @@ makeSelectedRecipes(){
           <div className="selected-recipes">
             <h3 className="text-center">Selected Recipes</h3>
             <div className="left-recipe-padding">
-              {this.state.selectedRecipes}
+              <h4 className="text-center uppercase">
+              {this.state.message}
+              </h4>
               {this.makeSelectedRecipes()}
             </div>
           </div>

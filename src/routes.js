@@ -5,10 +5,13 @@ import App from './components/App'
 import MenusIndex from './components/menus/MenusIndex'
 import MenuCreate from './components/menus/MenuCreate'
 import MenuShow from './components/menus/MenuShow'
+import MenuEdit from './components/menus/MenuEdit'
 
 import RecipeIndex from './components/recipes/RecipeIndex'
 import RecipeCreate from './components/recipes/RecipeCreate'
 import RecipeShow from './components/recipes/RecipeShow'
+import RecipeEdit from './components/recipes/RecipeEdit'
+
 
 import IngredientsIndex from './components/ingredients/IngredientsIndex'
 import IngredientCreate from './components/ingredients/IngredientCreate'
@@ -25,18 +28,20 @@ import FeaturedFoods from './components/FeaturedFoods'
 
 
 
-
 export default(
   <Route path='/' component={App}>
 
     <IndexRoute component={FeaturedFoods}/>
       <Route path='/recipes' component={RecipeIndex}/>
-      <Route path='/recipes/new' component={RecipeCreate}/>
+      <Route path='/recipes/new' component={RecipeCreate} />
+      <Route path='/recipes/:id/edit' component={RecipeEdit}/>
       <Route path='/recipes/:id' component={RecipeShow} onEnter={requireAuth}/>
+
 
       <Route path='/menus' component={MenusIndex}/>
       <Route path='/menus/new' component={MenuCreate} />
       <Route path='/menus/:id' component={MenuShow} />
+      <Route path='/menus/:id/edit' component={MenuEdit} />
 
       <Route path='/ingredients' component={IngredientsIndex}/>
       <Route path='/ingredients/new' component={IngredientCreate} />

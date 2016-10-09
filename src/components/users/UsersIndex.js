@@ -8,7 +8,7 @@ function UsersIndex (props) {
   return (
   <div>
     <div className="full-width">
-    <h1>Users <Link className='btn btn-default' to="/users/new">Add a user</Link> </h1>
+    <h1>Users <Link className='btn btn-default' to="/users/new">Sign Up</Link> </h1>
       {props.users.map(user => <Link to={`/users/${user.id}`}>
         <div className="menu-square">
           <div className="list" key={user.id}>{user.name}</div>

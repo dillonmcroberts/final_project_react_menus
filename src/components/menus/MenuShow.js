@@ -1,15 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import MenuCreate from './MenuCreate'
 import ReduxPromise from 'redux-promise';
 import ReduxThunk from 'redux-thunk'
 import * as actions from '../../actions'
 import { bindActionCreators } from 'redux'
-
+import {Link} from 'react-router'
 
 class MenuShow extends React.Component {
   constructor(){
     super();
+
     this.appetizers = this.appetizers.bind(this)
     this.mains = this.mains.bind(this)
     this.dessert = this.dessert.bind(this)
@@ -38,24 +38,26 @@ return this.props.menu.recipes.filter(recipe => recipe.course == 'appetizer').ma
       <h6 className='uppercase'> {this.props.menu.description}</h6>
       <h4>Appetizers</h4>
       <ul>
-        <li>Deviled Eggs</li>
+
         {this.appetizers()}
       </ul>
       <h4>Mains</h4>
         <ul>
-          <li>Jambalaya</li>
+
           {this.mains()}
         </ul>
       <h4>Desserts</h4>
         <ul>
-          <li>Beignets</li>
+
           {this.dessert()}
       </ul>
     </div>
+      <Link to={`/menus/${this.props.menu.id}/edit`}>Edit this Menu</Link>
   </div>
   )
 }
 }
+
 
 function mapDispatchToProps(dispatch){
   return {actions: bindActionCreators(actions, dispatch)}

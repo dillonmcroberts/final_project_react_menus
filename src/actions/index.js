@@ -37,6 +37,22 @@ export function addRecipe(newRecipeFromForm) {
   return {type: 'ADD_RECIPE', payload: newRecipeFromApi}
 }
 
+export function updateRecipe(recipe){
+  const updateApiRecipe = fetch(`http://localhost:3000/api/v1/recipes/${recipe.id}`,{
+    method: "PATCH",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({recipe: recipe})
+  }).then(response => {
+    return response.json()
+  }).then(updateRecipePlayload => {
+    return updateRecipePlayload
+  })
+  return {type: 'UPDATE_RECIPE', payload: updateApiRecipe}
+}
+
 //menus actions
 
 export function fetchMenus(){
@@ -64,6 +80,21 @@ export function addMenu(newMenuFromForm) {
   })
 
   return {type: 'ADD_MENU', payload: newMenuFromApi}
+}
+export function updateMenu(menu){
+  const updateApiMenu = fetch(`http://localhost:3000/api/v1/menus/${menu.id}`,{
+    method: "PATCH",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({menu: menu})
+  }).then(response => {
+    return response.json()
+  }).then(updateMenuPlayload => {
+    return updateMenuPlayload
+  })
+  return {type: 'UPDATE_MENU', payload: updateApiMenu}
 }
 
 //ingredients actions
@@ -127,11 +158,9 @@ export function addUser(newUserFromForm) {
 
 }
 
-//login and logout actions
 
-export function loginSuccess(){
-  return{type: types.LOG_IN_SUCCESS}
-}
+
+
 
 export function loginUser(credentials) {
   const jwtToken = fetch('http://localhost:3000/api/v1/login', {
@@ -150,6 +179,6 @@ export function loginUser(credentials) {
 }
 
 export function logOutUser(){
-
+  sessionStorage.removeItem('jwt');
   return {type: 'LOG_OUT'}
 }
