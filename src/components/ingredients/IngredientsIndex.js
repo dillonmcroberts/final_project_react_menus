@@ -25,6 +25,8 @@ class IngredientsIndex extends React.Component{
 
     return filteredIngredients.map(ingredient => <Link to={`/ingredients/${ingredient.id}`}>
       <h3 key={ingredient.id}>{ingredient.name}</h3>
+      <li> {ingredient.description}</li>
+      <li> Calories per tablespoon: {ingredient.caloriespertbsp}</li>
 
       </Link>)
   }
