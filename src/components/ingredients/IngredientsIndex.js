@@ -39,7 +39,7 @@ class IngredientsIndex extends React.Component{
     render(){
     return(
       <div className="full-width">
-        <h1>Recipes <Link className='btn btn-default' to="/ingredients/new">Add a new Ingredient</Link> </h1>
+        <h1>Ingredients <Link className='btn btn-default' to="/ingredients/new">Add an Ingredient</Link> </h1>
         <input value={this.state.term} placeholder="Search Ingredients" onChange={this.searchBoxInput}/>
         {this.makeIngredients()}
       </div>
