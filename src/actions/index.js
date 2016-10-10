@@ -179,6 +179,9 @@ export function loginUser(credentials) {
 }
 
 export function logOutUser(){
+<<<<<<< HEAD
+=======
   sessionStorage.removeItem('jwt');
+>>>>>>> master
   return {type: 'LOG_OUT'}
 }
