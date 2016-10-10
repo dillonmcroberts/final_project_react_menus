@@ -33,22 +33,22 @@ export default(
 
     <IndexRoute component={FeaturedFoods}/>
       <Route path='/recipes' component={RecipeIndex}/>
-      <Route path='/recipes/new' component={RecipeCreate} />
-      <Route path='/recipes/:id/edit' component={RecipeEdit}/>
-      <Route path='/recipes/:id' component={RecipeShow} onEnter={requireAuth}/>
+      <Route path='/recipes/new' component={RecipeCreate} onEnter={requireAuth}/>
+      <Route path='/recipes/:id/edit' component={RecipeEdit} onEnter={requireAuth}/>
+      <Route path='/recipes/:id' component={RecipeShow} />
 
 
       <Route path='/menus' component={MenusIndex}/>
-      <Route path='/menus/new' component={MenuCreate} />
+      <Route path='/menus/new' component={MenuCreate} onEnter={requireAuth}/>
       <Route path='/menus/:id' component={MenuShow} />
-      <Route path='/menus/:id/edit' component={MenuEdit} />
+      <Route path='/menus/:id/edit' component={MenuEdit} onEnter={requireAuth}/>
 
       <Route path='/ingredients' component={IngredientsIndex}/>
       <Route path='/ingredients/new' component={IngredientCreate} />
       <Route path='/ingredients/:id' component={IngredientShow} />
 
       <Route path='/users' component={UsersIndex}/>
-      <Route path='/users/:id' component={UserShow} onEnter={requireAuth}/>
+      <Route path='/users/:id' component={UserShow} />
 
       <Route path='/signup' component={UserCreate}/>
       <Route path='/login' component={SessionCreate}/>

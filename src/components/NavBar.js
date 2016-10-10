@@ -48,8 +48,6 @@ class NavBar extends React.Component{
             <Link to="/ingredients" className='navbar-brand brand' >Ingredients</Link>
             <Link to="/login" className='navbar-brand brand' >Log In</Link>
             <Link to="/signup" className='navbar-brand brand' >Sign Up</Link>
-
-
           </div>
         </nav>
       )
