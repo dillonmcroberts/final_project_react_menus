@@ -25,8 +25,7 @@ class IngredientsIndex extends React.Component{
 
     return filteredIngredients.map(ingredient => <Link to={`/ingredients/${ingredient.id}`}>
       <h3 key={ingredient.id}>{ingredient.name}</h3>
-      <li> {ingredient.description}</li>
-      <li> Calories per tablespoon: {ingredient.caloriespertbsp}</li>
+
       </Link>)
   }
 
@@ -39,8 +38,8 @@ class IngredientsIndex extends React.Component{
 
     render(){
     return(
-      <div>
-        <Link to='/ingredients/new'> Add a new ingredient</Link><br/>
+      <div className="full-width">
+        <h1>Recipes <Link className='btn btn-default' to="/ingredients/new">Add a new Ingredient</Link> </h1>
         <input value={this.state.term} placeholder="Search Ingredients" onChange={this.searchBoxInput}/>
         {this.makeIngredients()}
       </div>
