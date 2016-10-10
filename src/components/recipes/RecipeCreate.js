@@ -32,6 +32,7 @@ class RecipeCreate extends React.Component {
       instructions: this.refs.instructions.value,
       description: this.refs.description.value,
       difficulty_level: this.refs.difficulty_level.value,
+      creator_id: sessionStorage.currentUserId,
       course: courses.filter(course => course.checked)[0].value,
       ingredient_ids: idIngredients
     }
