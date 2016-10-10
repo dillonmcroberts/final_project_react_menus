@@ -23,6 +23,7 @@ class MenuNew extends React.Component {
       name: this.refs.name.value,
       occasion: this.refs.occasion.value,
       description: this.refs.description.value,
+      creator_id: sessionStorage.currentUserId,
       recipe_ids: this.state.recipeIds
     }
     this.props.actions.addMenu(newMenu)
