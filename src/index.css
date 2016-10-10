@@ -159,12 +159,14 @@ li.placeholder:before {
   height: 20%;
 }
 .fallRecipeImage {
-  max-width: 90%;
-  padding-left: 15%;
+  /*max-width: 100%;
+  max-height: 100%;*/
+  /*padding-left: 25%;*/
 }
 .halloweenContest {
-  max-width:100%;
-  max-height: 70%;
+  max-width:80%;
+  max-height: 20%;
+  opacity: 0.5;
 }
 .center-btn {
   margin-left: 15%;
