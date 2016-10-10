@@ -6,10 +6,10 @@ function MenusIndex (props) {
   return(
     <div>
     <div className="full-width">
-    <h1>Menus <Link className='btn-default btn'to="/menus/new">Add a menu</Link></h1>
+    <h1 className='appName'>Menus <Link className='btn-default btn'to="/menus/new">Add a menu</Link></h1>
 
         {props.menus.map(menu => <Link to={`/menus/${menu.id}`}>
-          <div className="menu-square"><div className="list" key={menu.id}>{menu.name}</div>
+          <div className="menu-square"><div className="list appName" key={menu.id}>{menu.name}</div>
           </div>
           </Link>)}
       {props.children}

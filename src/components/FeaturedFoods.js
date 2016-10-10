@@ -17,19 +17,8 @@ export default (props) => {
       <SimpleSlider/>
 
     </div>
-    <div className='row'>
-      <div className='col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
-          Featured Menu
-          <ul><li>Dinner With Friends</li></ul>
-
-      </div>
-
-      <div className='col-xs-6 col-md-6 col-lg-6 col-xl-6'>
-          Featured Recipes
-          <ul><li>Deviled Eggs</li><li>Peach Cobbler</li></ul>
-      </div>
       {props.children}
     </div>
-  </div>
+
   )
 }

@@ -33,11 +33,14 @@ class SessionCreate extends React.Component {
             className="form-control"
             ref='email'
             name='email'
+            placeholder='email'
             defaultValue={this.state.credentials.email} onChange={this.onChange}/><br/>
             <input
+            className="form-control"
             name='password'
             type='password'
             ref='password'
+            placeholder='password'
             defaultValue={this.state.credentials.password}
             onChange={this.onChange}/><br/>
           </div>

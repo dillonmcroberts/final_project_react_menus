@@ -5,7 +5,7 @@ var styles = {
   slide: {
     width: '400px',
     height: '200px',
-    opacity: '0.8',
+
     backgroundColor: 'rgba(238,283,283,0.5)',
   },
   fontStyle: {
@@ -29,15 +29,19 @@ export default class SimpleSlider extends React.Component {
     return (
       <Slider {...settings}>
         <div>
-          <h1>Chef Silvana</h1>
-          <p>I make decorative chocolate cakes for Dominique Ansel</p>
-          <p><a className="btn btn-primary btn-lg">Learn more</a></p>
+          <img className='featuredChef' src='https://media.licdn.com/media/AAEAAQAAAAAAAAhaAAAAJDkzMTQ4YWU3LTE0Y2YtNGMxNC05MTlkLTA5ZmI0Y2RlNmY3ZQ.jpg'></img>
+            <h1>Chef Silvana </h1>
+            <p>I make decorative chocolate cakes for Dominique Ansel</p>
+            <p><a className="btn btn-primary btn-lg">Learn more</a></p>
          </div>
-        <div><h1>Halloween Menu Contest!</h1>
-        <p>Create and Sumbit your Menu to Our Halloween Menu Competition or Vote for your Favorite Menu</p>
-        <p><a className="btn btn-primary btn-lg">Enter Contest</a>   <a className="btn btn-primary btn-lg">Vote for Your Favorite Halloween Menu</a></p></div>
-        <div style={styles.slide}><h3 style={styles.fontStyle} className='text-center'>Fall Recipes</h3></div>
-        <div><h3 className='text-center'>Fall Menus</h3></div>
+
+        <div>
+          <img className='halloweenContest' src='https://files.slack.com/files-pri/T02MD9XTF-F2MFBFB9V/halloween-menu.jpg'/>
+</div>
+        <div style={styles.slide}>
+          <img className='fallRecipeImage' src='http://clv.h-cdn.co/assets/16/37/980x490/landscape-1473879046-picmonkey-collage-23.jpg'></img>
+          <a className="btn btn-primary btn-lg center-btn">Browse Fall Recipes Gallery</a>
+      </div>
       </Slider>
 
     )}
