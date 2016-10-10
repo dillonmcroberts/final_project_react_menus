@@ -17,6 +17,8 @@ class UserCreate extends React.Component {
       name: this.refs.name.value,
       email: this.refs.email.value,
       password: this.refs.password.value,
+      location: this.refs.location.value,
+      fav_foods: this.refs.fav_foods.value,
     }
     this.props.actions.addUser(newUser)
   }
@@ -25,12 +27,12 @@ class UserCreate extends React.Component {
     return (
       <div>
         <form onSubmit={this.newUserHandler}>
-          <div className="form-group">
             <input className="form-control" ref='name' placeholder="name" /><br/>
             <input  className="form-control" ref='email' placeholder="email"/><br/>
-            <input type='password'ref='password' placeholder="password"/><br/>
-          </div>
-          <input className='btn btn-default' type="submit" value="Create a New Account"/>
+            <input  className="form-control" type='password'ref='password' placeholder="password"/><br/>
+            <input  className="form-control" ref='location' placeholder="location"/><br/>
+            <input  className="form-control" ref='fav_foods' placeholder="fav_foods"/><br/>
+            <input className='btn btn-default' type="submit" value="Create a New Account"/>
         </form>
       </div>
     )

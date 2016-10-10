@@ -4,7 +4,7 @@ export default function usersReducer(state=[], action) {
     case 'FETCH_USERS':
       return action.payload;
       case 'ADD_USER':
-        return [...state, action.payload]
+          return [...state, action.payload]
     default:
       return state;
   }

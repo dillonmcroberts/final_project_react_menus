@@ -29,7 +29,7 @@ body {
   width: 30%;
   padding-bottom: 30%;
   border-width: 1px;
-  background-color: rgb(223, 236, 222);
+  background-color: white;
   display: inline-block;
   float: left;
   margin: 1%;
@@ -42,7 +42,7 @@ body {
 }
 
 .body-background {
-  background-color: rgb(159, 206, 154);
+  background-color: #efece3;
 }
 
 a {
@@ -91,7 +91,7 @@ a:hover {
   padding-bottom: 20%;
   border-width: 1px;
   height: 70%;
-  background-color: rgb(223, 236, 222);
+  background-color: white;
 }
 
 .selected-recipes {
@@ -118,19 +118,33 @@ a:hover {
   background-color: rgb(80, 107, 78);
   color: white;
 }
-.hot-pink {
-  background-color: rgb(242, 6, 176);
-  display: block;
-  width: 600px;
-  height: 600px;
-  z-index: 10000;
-}
 
-li.moving {
-  background-color: rgb(83, 102, 224);
-  color: rgb(235, 63, 81);
+.drag-me {
+  width: 150px;
+  color: rgb(84, 143, 82);
+  border: 2px dashed rgb(84, 143, 82);
+  /*text-align: center;*/
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 li.placeholder:before {
   content: "Drop here";
   color: white;
+}
+
+.ingredients-list {
+  padding: 0;
+  list-style-type: none;
+
+}
+.ingredients-list ul li {
+  list-style-type: none;
+
+}
+
+.ingredients-list:hover {
+  color: white;
+
 }
