@@ -4,11 +4,15 @@ import MenuApi from '../api/menuApi'
 import RecipeApi from '../api/recipeApi'
 import IngredientApi from '../api/ingredientApi'
 import UserApi from '../api/userApi'
+import Environment from '../../config/env'
 
 
 // recipes actions
 
+var url = Environment.BASE_URL
+
 export function fetchRecipes(){
+  debugger;
 
 const recipes = RecipeApi.getAllRecipes();
 
@@ -19,7 +23,7 @@ const recipes = RecipeApi.getAllRecipes();
 }
 
 export function addRecipe(newRecipeFromForm) {
-  const newRecipeFromApi = fetch('http://localhost:3000/api/v1/recipes', {
+  const newRecipeFromApi = fetch(url + 'api/v1/recipes', {
     method: 'POST',
     headers: {
       'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`,
@@ -38,7 +42,7 @@ export function addRecipe(newRecipeFromForm) {
 }
 
 export function updateRecipe(recipe){
-  const updateApiRecipe = fetch(`http://localhost:3000/api/v1/recipes/${recipe.id}`,{
+  const updateApiRecipe = fetch(url + `recipes/${recipe.id}`,{
     method: "PATCH",
     headers: {
       'Accept': 'application/json',
@@ -65,7 +69,7 @@ export function fetchMenus(){
 }
 
 export function addMenu(newMenuFromForm) {
-  const newMenuFromApi = fetch('http://localhost:3000/api/v1/menus', {
+  const newMenuFromApi = fetch(url + '/api/v1/menus', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -82,7 +86,7 @@ export function addMenu(newMenuFromForm) {
   return {type: 'ADD_MENU', payload: newMenuFromApi}
 }
 export function updateMenu(menu){
-  const updateApiMenu = fetch(`http://localhost:3000/api/v1/menus/${menu.id}`,{
+  const updateApiMenu = fetch(url + `api/v1/menus/${menu.id}`,{
     method: "PATCH",
     headers: {
       'Accept': 'application/json',
@@ -110,7 +114,7 @@ const ingredients = IngredientApi.getAllIngredients();
 }
 
 export function addIngredient(newIngredientFromForm) {
-  const newIngredientFromApi = fetch('http://localhost:3000/api/v1/ingredients', {
+  const newIngredientFromApi = fetch(url + '/api/v1/ingredients', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -140,7 +144,7 @@ export function fetchUsers(){
 }
 
 export function addUser(newUserFromForm) {
-  const newUserFromApi = fetch('http://localhost:3000/api/v1/users', {
+  const newUserFromApi = fetch(url + '/api/v1/users', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -163,7 +167,7 @@ export function addUser(newUserFromForm) {
 
 
 export function loginUser(credentials) {
-  const jwtToken = fetch('http://localhost:3000/api/v1/login', {
+  const jwtToken = fetch(url + '/api/v1/login', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
