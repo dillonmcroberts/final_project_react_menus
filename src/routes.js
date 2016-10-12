@@ -25,7 +25,7 @@ import SessionCreate from './components/sessions/SessionCreate'
 import LogOut from './components/sessions/LogOut'
 
 import FeaturedFoods from './components/FeaturedFoods'
-
+import Competition from './components/Competition'
 
 
 export default(
@@ -53,7 +53,7 @@ export default(
       <Route path='/signup' component={UserCreate}/>
       <Route path='/login' component={SessionCreate}/>
       <Route path='/logout' component={LogOut}/>
-
+      <Route path='/competition' component={Competition}/>
 
     </Route>
   )

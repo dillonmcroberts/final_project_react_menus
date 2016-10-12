@@ -31,7 +31,7 @@ export default class SimpleSlider extends React.Component {
         <div>
           <img className='featuredChef' src='https://media.licdn.com/media/AAEAAQAAAAAAAAhaAAAAJDkzMTQ4YWU3LTE0Y2YtNGMxNC05MTlkLTA5ZmI0Y2RlNmY3ZQ.jpg'></img>
             <h1>Chef Silvana </h1>
-            <p>I make decorative chocolate cakes for Dominique Ansel</p>
+            <p>I make chocolate cakes</p>
             <p><a className="btn btn-primary btn-lg">Learn more</a></p>
          </div>
 

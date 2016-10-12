@@ -171,3 +171,6 @@ li.placeholder:before {
 .center-btn {
   margin-left: 15%;
 }
+.titlecase {
+  text-transform: capitalize;
+}

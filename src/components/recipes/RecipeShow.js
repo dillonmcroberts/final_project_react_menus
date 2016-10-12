@@ -19,7 +19,7 @@ class RecipeShow extends React.Component {
   </h2>
     <ul>
       <li> {this.props.recipe.cuisine}</li>
-      <li>Difficultly: {this.props.recipe.difficulty_level}</li>
+      <li>Difficulty: {this.props.recipe.difficulty_level}</li>
       <li>Cuisine: {this.props.recipe.cuisine_type}</li>
       <li>Prep & Cook Time: {this.props.recipe.cooking_time}</li>
     </ul>

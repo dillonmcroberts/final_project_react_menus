@@ -9,14 +9,17 @@ export default function menusReducer(state=[], action) {
       case 'ADD_MENU':
         browserHistory.push('/menus')
         return [...state, action.payload]
-        
+
       case 'UPDATE_MENU':
       browserHistory.push('/menus')
+
+      case 'ADD_MENU_VOTE':
+      // browserHistory.push('/competition')
 
       const index = state.indexOf(state.find(function (menu) {
         return menu.id == action.payload.id;
       }))
-      browserHistory.push('/menus')
+    //  browserHistory.push('/menus')
       return state.slice(0, index).concat([action.payload]).concat(state.slice(index + 1))
 
     default:

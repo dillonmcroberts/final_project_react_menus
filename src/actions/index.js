@@ -97,6 +97,21 @@ export function updateMenu(menu){
   return {type: 'UPDATE_MENU', payload: updateApiMenu}
 }
 
+export function addMenuVote(menu){
+  const updateApiMenu = fetch(`http://localhost:3000/api/v1/menus/${menu.id}`,{
+    method: "PATCH",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({menu: menu})
+  }).then(response => {
+    return response.json()
+  }).then(updateMenuPlayload => {
+    return updateMenuPlayload
+  })
+  return {type: 'ADD_MENU_VOTE', payload: updateApiMenu}
+}
 //ingredients actions
 
 export function fetchIngredients(){

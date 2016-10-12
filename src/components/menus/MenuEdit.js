@@ -13,6 +13,7 @@ export class MenuEdit extends React.Component {
 
   updateMenuHandler(event){
     event.preventDefault()
+    debugger;
     let recipes = this.props.recipes
     let checkedRecipes = recipes.filter((recipe) => this.refs[recipe.id].checked )
     let idRecipes = checkedRecipes.map((recipe) => (recipe.id))
