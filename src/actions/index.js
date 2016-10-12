@@ -12,7 +12,6 @@ import Environment from '../../config/env'
 var url = Environment.BASE_URL
 
 export function fetchRecipes(){
-  debugger;
 
 const recipes = RecipeApi.getAllRecipes();
 
@@ -102,7 +101,7 @@ export function updateMenu(menu){
 }
 
 export function addMenuVote(menu){
-  const updateApiMenu = fetch(`http://localhost:3000/api/v1/menus/${menu.id}`,{
+  const updateApiMenu = fetch(url + `api/v1/menus/${menu.id}`,{
     method: "PATCH",
     headers: {
       'Accept': 'application/json',
@@ -116,12 +115,9 @@ export function addMenuVote(menu){
   })
   return {type: 'ADD_MENU_VOTE', payload: updateApiMenu}
 }
-//ingredients actions
 
 export function fetchIngredients(){
-
 const ingredients = IngredientApi.getAllIngredients();
-
  return {
    type: 'FETCH_INGREDIENTS',
    payload: ingredients

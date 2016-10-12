@@ -47,7 +47,7 @@ class NavBar extends React.Component{
             <Link className='navbar-brand brand' to="/menus">Menus</Link>
             <Link to="/recipes" className='navbar-brand brand' >Recipes</Link>
             <Link to="/ingredients" className='navbar-brand brand' >Ingredients</Link>
-            <Link to="/Competition" className='navbar-brand brand' >Competition</Link>
+            <Link to="/competition" className='navbar-brand brand' >Competition</Link>
             <Link to="/login" className='navbar-brand brand' >Log In</Link>
             <Link to="/signup" className='navbar-brand brand' >Sign Up</Link>
           </div>

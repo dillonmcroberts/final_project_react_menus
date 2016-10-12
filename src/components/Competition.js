@@ -11,7 +11,6 @@ export class Competition extends React.Component{
 
   handleVote(event){
     event.preventDefault()
-    debugger;
     let selectedMenu = this.props.menus.filter(menu => menu.id == event.target.id)[0]
         let recipe_ids = selectedMenu.recipes.map((recipe) => (recipe.id))
 
@@ -27,6 +26,7 @@ export class Competition extends React.Component{
   }
 
   makeMenus(){
+    console.log("I ran")
     return this.props.menus.map(menu => <div>
       <h3 className="titlecase">{menu.name}</h3>
       <h4> Current total votes: {menu.votes}</h4>
