@@ -3,6 +3,11 @@
 
 var REACT_APP = /^REACT_APP_/i;
 
+var __Environments = {
+  production: {BASE_URL: "https://gentle-taiga-69325.herokuapp.com/"},
+  development: {BASE_URL: 'https://localhost:3000'}
+}
+
 function getClientEnvironment(publicUrl) {
   return Object
     .keys(process.env)
