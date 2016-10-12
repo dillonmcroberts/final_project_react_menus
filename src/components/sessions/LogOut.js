@@ -10,7 +10,7 @@ class Logout extends React.Component {
     }
     componentDidMount() {
       this.props.actions.logOutUser();
-        setInterval( () => browserHistory.push('/'), 1000);
+      browserHistory.push('/');
     }
 
     render() {
