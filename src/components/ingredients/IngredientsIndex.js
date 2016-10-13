@@ -36,7 +36,7 @@ class IngredientsIndex extends React.Component{
   })
 
     return filteredIngredients.map(ingredient => <Link to={`/ingredients/${ingredient.id}`}>
-      <h3 key={ingredient.id}>{ingredient.name}</h3>
+      <h3 key={ingredient.id}>{ingredient.name}</h3><p>{ingredient.description}</p>
 
       </Link>)
   }

@@ -48,10 +48,9 @@ return this.props.menu.recipes.filter(recipe => recipe.course == 'appetizer').ma
         </ul>
       <h4>Desserts</h4>
         <ul>
-
           {this.dessert()}
       </ul>
-    </div>
+    </div><br/>
       <Link to={`/menus/${this.props.menu.id}/edit`}>Edit this Menu</Link>
   </div>
   )

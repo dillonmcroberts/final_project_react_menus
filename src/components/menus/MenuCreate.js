@@ -58,7 +58,7 @@ class MenuNew extends React.Component {
 makeUnselectedRecipes() {
   let recipes = this.props.recipes
   const notSelRecipes = recipes.filter(recipe => !this.state.recipeIds.includes(recipe.id))
-  return notSelRecipes.map((recipe) => <div id={recipe.id} draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleAddRecipe}> <p ref={`${recipe.id}`}>{recipe.name}</p> </div>)
+  return notSelRecipes.map((recipe) => <div id={recipe.id} draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleAddRecipe}> <p ref={`${recipe.id}`}>{recipe.name} ({recipe.course})</p> </div>)
 }
 
 makeSelectedRecipes(){
