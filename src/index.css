@@ -20,7 +20,9 @@ body {
 
 .list {
   position: absolute;
+  max-width: 100%;
   font-weight: 700;
+  word-wrap: break-word;
   padding-top: 10%;
   padding-left: 5%;
   text-align: center;

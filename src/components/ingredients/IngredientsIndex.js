@@ -15,18 +15,29 @@ class IngredientsIndex extends React.Component{
   let ingredients = this.props.ingredients
   let filteredIngredients = []
 
-  ingredients.forEach(ingredient => {
+  let alphaSortIngredients = ingredients.sort(function(a, b) {
+  var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+  var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+});
+  alphaSortIngredients.forEach(ingredient => {
     if (ingredient.name.toLowerCase().includes(this.state.term.toLowerCase()))
     {
       filteredIngredients.push(ingredient)
     }
   })
 
-
     return filteredIngredients.map(ingredient => <Link to={`/ingredients/${ingredient.id}`}>
       <h3 key={ingredient.id}>{ingredient.name}</h3>
-      <li> {ingredient.description}</li>
-      <li> Calories per tablespoon: {ingredient.caloriespertbsp}</li>
+
       </Link>)
   }
 
