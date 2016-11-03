@@ -6,7 +6,8 @@ import SimpleSlider from './SimpleSlider'
 
 var styles = {
   customJumbotron: {
-    backgroundColor: 'rgba(238,283,283,0.5)'
+    backgroundColor: 'rgba(238,283,283,0.5)',
+    boxShadow: '10px 10px 5px grey'
   }
 }
 

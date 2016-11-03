@@ -40,7 +40,7 @@ export class MenuEdit extends React.Component {
       <form onSubmit={this.updateMenuHandler}>
         <input ref='id' type='hidden' value={this.props.params.id}/>
         <label>name:</label>
-        <input ref='name' placeholder={this.props.menu.name}></input><br/>
+        <input ref='name' value={this.props.menu.name} onChange={this.props.onChange}></input><br/>
         <label>occasion:</label>
         <input ref='occasion' value={this.props.menu.occasion}/><br/>
         <label>description:</label>

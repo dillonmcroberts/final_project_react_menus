@@ -37,10 +37,7 @@ export default class SimpleSlider extends React.Component {
 
         <div style={styles.slide}>
           <h2>Browse Fall Recipes and Menus</h2>
-          <img className='fallRecipeImage' src='http://clv.h-cdn.co/assets/16/37/980x490/landscape-1473879046-picmonkey-collage-23.jpg'></img>
-      </div>
-      <div>
-        <img className='halloweenContest' src='https://files.slack.com/files-pri/T02MD9XTF-F2MFBFB9V/halloween-menu.jpg'/>
+          <img className='fallRecipeImage' src='http://i.imgur.com/AXUjoZv.jpg'></img>
       </div>
       </Slider>
 

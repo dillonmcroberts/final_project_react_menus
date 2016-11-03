@@ -8,6 +8,9 @@ import { connect } from 'react-redux'
 class RecipeEdit extends React.Component {
   constructor(props){
     super(props)
+    this.state = {
+      name: this.props.recipe.name
+    }
     this.updateRecipeHandler = this.updateRecipeHandler.bind(this)
   }
 
@@ -32,6 +35,7 @@ class RecipeEdit extends React.Component {
     this.props.actions.updateRecipe(recipe)
 }
 
+
   makeIngredients() {
   let ingredients = this.props.ingredients
   return ingredients.map((ingredient) => <div ref={`div${ingredient.id}`}> <label>{ingredient.name}</label><input type='checkbox' ref={`${ingredient.id}`}/> </div>)
@@ -44,17 +48,17 @@ class RecipeEdit extends React.Component {
         <form onSubmit={this.updateRecipeHandler}>
           <input ref='id' type='hidden' value={this.props.params.id}/>
           <label>Name: </label>
-          <input ref='name' value={this.props.recipe.name} /><br/>
+          <input ref='name' defaultValue={this.state.name}  /><br/>
           <label>Cuisine: </label>
-          <input ref='cuisine_type' value={this.props.recipe.cuisine_type}/><br/>
+          <input ref='cuisine_type' defaultValue={this.props.recipe.cuisine_type}/><br/>
           <label>Difficultly: </label>
-          <input ref='difficulty_level' value={this.props.recipe.difficulty_level}/><br/>
+          <input ref='difficulty_level' defaultValue={this.props.recipe.difficulty_level}/><br/>
           <label>Cooking Time: </label>
-          <input ref='cooking_time' value={this.props.recipe.cooking_time}/><br/>
+          <input ref='cooking_time' defaultValue={this.props.recipe.cooking_time}/><br/>
           <label>Instructions: </label>
-          <input ref='instructions' value={this.props.recipe.instructions}/><br/>
+          <input ref='instructions' defaultValue={this.props.recipe.instructions}/><br/>
           <label>Description: </label>
-          <input ref='description' value={this.props.recipe.description}/><br/>
+          <input ref='description' defaultValue={this.props.recipe.description}/><br/>
           <label>Course: </label><br/>
           <input ref='appetizer' type="radio" name="course" value="appetizer"/>Appetizer
           <input ref='main' type="radio" name="course" value="main"/>Main

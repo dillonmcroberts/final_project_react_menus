@@ -2,15 +2,6 @@ import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
 import {connect} from 'react-redux'
 
-var styles = {
-  brand: {
-    // color: 'pink',
-    // backgroundColor: 'orange'
-  }
-
-}
-
-
 class NavBar extends React.Component{
 
   constructor(props){
@@ -27,7 +18,7 @@ class NavBar extends React.Component{
     if (this.props.logged_in) {
 
       return (
-        <nav className='navbar navbar-default navbar-static-top' style={styles.brand}>
+        <nav className='navbar navbar-default navbar-static-top' >
           <div className='navbar-header'>
             <a className='navbar-brand brand' href={this.props.url}>{this.props.title}</a>
             <Link className='navbar-brand brand' to="/menus">Menus</Link>
@@ -40,7 +31,7 @@ class NavBar extends React.Component{
       )
     } else {
       return (
-        <nav className='navbar navbar-default navbar-static-top' style={styles.brand}>
+        <nav className='navbar navbar-default navbar-static-top' >
           <div className='navbar-header'>
             <a className='navbar-brand brand' href={this.props.url}>{this.props.title}</a>
             <Link className='navbar-brand brand' to="/menus">Menus</Link>
